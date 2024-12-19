@@ -5,6 +5,8 @@ title: 'Proc: '
 labels: ''
 assignees: ''
 ---
+## Time Estimate
+*How long is this Procedure expected to take?*
 
 ## Background
 *relevant information on why this procedure exists. things that the person running the procedure must know.*
