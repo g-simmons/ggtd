@@ -3,7 +3,9 @@ install:
 	@echo "Installing ggtd..."
 
 	ln -s $(pwd)/scripts/install-issue-templates.sh /usr/local/bin/ggtd-install-issue-templates
+	ln -s $(pwd)/scripts/install-ggtd-scripts.sh /usr/local/bin/ggtd-install-ggtd-scripts
 	chmod +x /usr/local/bin/ggtd-install-issue-templates
+	chmod +x /usr/local/bin/ggtd-install-ggtd-scripts
 
 	@echo "\n"
 	@echo "Please set GGTD_DIR in your shell to $$(pwd)."

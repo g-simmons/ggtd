@@ -37,19 +37,22 @@ while read -r issue_number; do
     assignee=$(echo "$event" | jq -r '.assignee')
     assigned_at=$(echo "$event" | jq -r '.assigned_at')
     
-    # Get the issue details
-    gh issue view "$issue_number" --json title \
-      --jq '[.title] | @tsv' | \
-    while IFS=$'\t' read -r title; do
-      # Calculate days elapsed since assignment
-      days=$(calculate_days "$assigned_at")
-      
-      # Clean the title
-      title="${title//$'\n'/ }"
-      title="${title//$'\t'/ }"
-      
-      # Output in format for sorting
-      echo "$assignee|$issue_number|$days|$title"
+    # Get the issue details and current assignees
+    gh issue view "$issue_number" --json title,assignees \
+      --jq '[.title, (.assignees | map(.login) | join(","))] | @tsv' | \
+    while IFS=$'\t' read -r title current_assignees; do
+      # Only proceed if the assignee is still assigned
+      if [[ ",$current_assignees," == *",$assignee,"* ]]; then
+        # Calculate days elapsed since assignment
+        days=$(calculate_days "$assigned_at")
+        
+        # Clean the title
+        title="${title//$'\n'/ }"
+        title="${title//$'\t'/ }"
+        
+        # Output in format for sorting
+        echo "$assignee|$issue_number|$days|$title"
+      fi
     done
   done
 done | sort | \
