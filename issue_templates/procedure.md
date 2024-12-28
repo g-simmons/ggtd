@@ -19,3 +19,6 @@ assignees: ''
 
 ## Steps
 *instructions to complete the procedure, from start to finish*
+*instructions should be _directives_*
+*good: place boxes in stacks of 3*
+*bad: boxes must be stacked*
