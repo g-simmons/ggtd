@@ -15,6 +15,12 @@ install:
 	@echo "    export 'GGTD_DIR=$$(pwd)' >> ~/.bashrc"
 	@echo "\n"
 
+issue_templates_docx:
+	mkdir -p issue_templates_docx
+	for file in issue_templates/*.md; do \
+		pandoc -s -o issue_templates_docx/$$(basename $$file .md).docx $$file; \
+	done
+
 
 uninstall:
 	rm -f /usr/local/bin/ggtd-install-issue-templates
