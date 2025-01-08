@@ -8,6 +8,12 @@ assignees: ''
 ## Time Estimate
 *How long is this Procedure expected to take?*
 
+*How long has this Procedure taken in the past?*
+
+| date | time taken |
+|------|------------|
+|      |            |
+
 ## Background
 *relevant information on why this procedure exists. things that the person running the procedure must know.*
 
